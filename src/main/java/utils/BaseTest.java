@@ -7,8 +7,9 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
-import pages.*;
-
+import pages.GamePage;
+import pages.HomePage;
+import pages.ResultsOverlay;
 
 import java.net.URL;
 import java.time.Duration;
@@ -21,26 +22,15 @@ public class BaseTest {
     static String gridEndPoint="";
 
     //pageClasses
-    public LandingPage landingPage;
     public HomePage homePage;
-    public SignInPage signInPage;
-    public TemplatesPage templatesPage;
-    public RetweetsTrackerPage retweetsTrackerPage;
-    public ShareOverlayPage shareOverlayPage;
-    public SpreadsheetPage spreadsheetPage;
-
-    public String username;
-    public String password;
-
-
+    public GamePage gamePage;
+    public ResultsOverlay resultsOverlay;
 
     @BeforeMethod
     @Parameters({"browser"})
     public void beforeMethod(String browser){
         driverSetUp(browser);
         driver.get(ConfigUtils.applicationUrl);
-        username = ConfigUtils.username;
-        password = ConfigUtils.password;
         initialisePageClasses();
     }
 
@@ -83,11 +73,7 @@ public class BaseTest {
     private void initialisePageClasses(){
         seleniumUtils = new SeleniumUtils();
         homePage = new HomePage();
-        landingPage = new LandingPage();
-        signInPage = new SignInPage();
-        templatesPage = new TemplatesPage();
-        retweetsTrackerPage = new RetweetsTrackerPage();
-        shareOverlayPage = new ShareOverlayPage();
-        spreadsheetPage = new SpreadsheetPage();
+        gamePage = new GamePage();
+        resultsOverlay = new ResultsOverlay();
     }
 }

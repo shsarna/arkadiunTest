@@ -11,8 +11,6 @@ import java.util.Properties;
 public class ConfigUtils {
 
     public static String applicationUrl = "";
-    public static String username = "";
-    public static String password = "";
 
     static {
 
@@ -30,8 +28,6 @@ public class ConfigUtils {
             Reporter.log("IOException found : " + e);
         }
         applicationUrl = propertiesObj.getProperty("url");
-        username = propertiesObj.getProperty("username");
-        password = propertiesObj.getProperty("password");
 
     }
 }
